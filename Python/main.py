@@ -1,5 +1,5 @@
 import os
-import array
+import aray
 import queue
 import stack
 import linkedlist
@@ -36,7 +36,7 @@ def show_data_structures_menu():
 
 		# start of data structures menu:
 		if choice == 1:
-			array.show_array_menu()
+			aray.show_array_menu()
 			break
 		elif choice == 2:
 			queue.show_queue_menu()
