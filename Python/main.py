@@ -6,8 +6,13 @@ import linkedlist
 import binarytree
 import graph
 
+# TODO Error handling? 
+
 def pause_screen():
 	inp = input("\nPress enter to continue...")
+
+def clear_screen():
+	os.system("clear")
 
 def prompt(question):
 	try:
