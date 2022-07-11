@@ -135,15 +135,8 @@ struct Array{
             else 
                 continue;
         }
-
-        
-
-
-
         system("read -p 'Press any key to continue... '");
         arrayMenu();
-
-
     }
 };
 
