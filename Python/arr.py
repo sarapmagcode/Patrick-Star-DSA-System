@@ -1,5 +1,8 @@
 import main
 
+# NOTE: adding 'sep' or 'end' parameters isn't possible
+# to 'input' func within 'prompt'
+
 # Global arr variable
 array = []
 
@@ -51,8 +54,12 @@ def show_original():
 def show_sorted():
 	# Note adding '.sort' inside print func returns NONE
 	# so sorting of list is seperated
-	array.sort()
-	print(array)
+	
+	# Create a temp sorted arr var to be sorted
+	# for every func call~
+	sorted_array = array.copy()
+	sorted_array.sort()
+	print(sorted_array)
 
 def search_element():
 	# Instantiate var 'n' as value to hold for searching a 
@@ -66,11 +73,3 @@ def search_element():
 		print(str(n) + " is NOT found within the array!\
 							 Try to see if the entered value is correct\
 								 then try again.") # TODO: Optimize printout
-
-
-	# # Basic for-loop for traversing list
-	# for arr in array:
-	# 	if (n not in arr):
-	# 		print("Not here!")
-	# 	else:
-	# 		print("found it!")
