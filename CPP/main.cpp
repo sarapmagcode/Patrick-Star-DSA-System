@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "class.h"
 
 using namespace std;
 
@@ -54,9 +55,9 @@ void show_algorithms_menu(){
     
     // Menu Loop
     int choice;
-    cout << "Enter choice: ";
-    cin >> choice;
     while(true){
+        cout << "Enter choice: ";
+        cin >> choice;            
         switch(choice){
             case 1:
                 // Search Algo
@@ -79,12 +80,13 @@ void show_data_structures_menu(){
 
         // Menu Loop
     int choice;
-    cout << "Enter choice: ";
-    cin >> choice;
     while(true){
+        cout << "Enter choice: ";
+        cin >> choice;
         switch(choice){
             case 1:
-                // Array menu
+                array obj;
+                    obj.printMsg();
                 break;
             case 2:
                 // Queue menu
