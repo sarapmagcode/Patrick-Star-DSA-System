@@ -29,6 +29,7 @@ class Graph:
 			print((u + 1), end=" ")
 
 		# TODO: fix the spaces on large matrix dimensions
+		
 		print()
 		for u in range(self.sz):
 			print((u + 1), end="")
@@ -65,7 +66,6 @@ def show_graph_menu():
 			g = Graph(vertices)
 			
 			# TODO: fix the duplicate edges
-
 			print(f"Enter {edges}  edges: ")
 			i = 0
 			while i < edges:
