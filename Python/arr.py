@@ -11,10 +11,15 @@ def show_array_menu():
 		
 		# choices in array menu
 		if num == 1:
-			break
+			pass
+		elif num == 2:
+			pass
+		elif num == 3:
+			pass
+		elif num == 4:
+			pass
 		elif num == 5:
 			main.show_data_structures_menu()
-			break
 		else:
 			print("Invalid. Please try again.")
 		
