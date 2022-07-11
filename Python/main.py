@@ -1,5 +1,5 @@
 import os
-import arr
+import aray
 import queue
 import stack
 import linkedlist
@@ -36,7 +36,7 @@ def show_data_structures_menu():
 
 		# start of data structures menu:
 		if choice == 1:
-			arr.show_array_menu()
+			aray.show_array_menu()
 			break
 		elif choice == 2:
 			queue.show_queue_menu()
@@ -62,9 +62,6 @@ def show_data_structures_menu():
 def show_algorithms_menu():
 	choices = ["Searching Algorithms", "Sorting Algorithms", "Graph Algorithms"]
 	generate_menu_header("Algorithms", choices)
-
-def clear_screen():
-	os.system("clear")
 
 def main():
 	generate_menu_header("Main Menu", ["Data Structures", "Algorithms", "Exit"])
