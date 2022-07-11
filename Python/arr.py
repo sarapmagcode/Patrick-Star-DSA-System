@@ -15,16 +15,14 @@ def show_array_menu():
 		# choices in array menu
 		if num == 1:
 			create_array()
-			# break
 		elif num == 2:
 			show_original()
-			# break
 		elif num == 3:
-
-			pass
+			show_sorted()
+		elif num == 4:
+			search_element()
 		elif num == 5:
 			main.show_data_structures_menu()
-			# break
 		else:
 			print("Invalid. Please try again.")
 
@@ -34,6 +32,9 @@ def create_array():
 
 	# Global arr var
 	global array
+
+	# Make sure list is empty
+	array.clear()
 
 	# Basic range loop for appending elements into
 	# the empty list
@@ -48,16 +49,28 @@ def show_original():
 	print(array)
 
 def show_sorted():
-	print(array.sort())
+	# Note adding '.sort' inside print func returns NONE
+	# so sorting of list is seperated
+	array.sort()
+	print(array)
 
 def search_element():
 	# Instantiate var 'n' as value to hold for searching a 
 	# specific element
 	n = main.prompt("Enter the value of an element to search: ")
 
-	# Basic for-loop for traversing list
-	for arr in array:
-		if (n not in arr):
-			print("Not here!")
-		else:
-			print("found it!")
+	# Basic check if inside array
+	if (n in array):
+		print(str(n) + " is found within the array!") # TODO: Optimize printout
+	else:
+		print(str(n) + " is NOT found within the array!\
+							 Try to see if the entered value is correct\
+								 then try again.") # TODO: Optimize printout
+
+
+	# # Basic for-loop for traversing list
+	# for arr in array:
+	# 	if (n not in arr):
+	# 		print("Not here!")
+	# 	else:
+	# 		print("found it!")
