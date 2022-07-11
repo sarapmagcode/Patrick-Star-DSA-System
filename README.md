@@ -1,2 +1,5 @@
 # Patrick-Star-DSA-System
-![image](https://user-images.githubusercontent.com/85553852/172541342-659b1f58-9638-477a-ac89-c07f6863360c.png)
+This system is simply a combination of common/well-known data structures and algorithms in the field of Computer Science.
+P.S. 
+Goodluck kay Crom kasi siya gagawa sa lahat ng C++ hehe
+peace out mah G!
