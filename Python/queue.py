@@ -8,7 +8,7 @@ front = -1 # Index tracking for first & last in the queue
 rear = -1 
 
 def show_queue_menu():
-	choices = ["Create queue", "Check if full", "Check if empty", "Enqueue/insert", "Dequeue/remove", "Get front/first element", "Get rear/back element", "Go back"]
+	choices = ["Create queue", "Display", "Check if full", "Check if empty", "Enqueue/insert", "Dequeue/remove", "Get front/first element", "Get rear/back element", "Go back"]
 	main.generate_menu_header("Queue", choices)
 	
 	while True:
@@ -18,18 +18,20 @@ def show_queue_menu():
 		if num == 1:
 			create_queue()
 		elif num == 2:
-			print(isFull()) # TODO: Rework | False = FULL || True = not Full
+			display()
 		elif num == 3:
-			print(isEmpty()) # TODO: Rework | 
+			print(isFull()) # TODO: Rework | False = FULL || True = NOT full
 		elif num == 4:
-			enqueue() # TODO: Prompt if success or empty
+			print(isEmpty()) # TODO: Rework | False = NOT empty || True = EMPTY
 		elif num == 5:
-			dequeue() # TODO: Prompt if success or empty
+			enqueue() # TODO: Prompt if success or empty
 		elif num == 6:
-			first_queue()
+			dequeue() # TODO: Prompt if success or empty
 		elif num == 7:
-			last_queue()
+			first_queue()
 		elif num == 8:
+			last_queue()
+		elif num == 9:
 			main.show_data_structures_menu()
 		else:
 			print("Invalid. Please try again.")
@@ -53,6 +55,10 @@ def create_queue():
 		q.append(main.prompt("Enter the " + str(x+1) + " element to enqueue: ")) # TODO: Optimize printout
 		# Count number of items queued
 		qItems += 1
+
+def display():
+	#NOTE: Basic display output
+	print(q)
 
 def isFull():
 	status = False if qItems < qSize else True
