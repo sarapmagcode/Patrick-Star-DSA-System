@@ -4,7 +4,7 @@ import main
 # to 'input' func within 'prompt'
 
 # Global arr variable
-array = []
+arr = []
 
 def show_array_menu():
 	choices = ["Create array", "Show original", "Show sorted", "Search element", "Go back"]
@@ -34,22 +34,23 @@ def create_array():
 	size = main.prompt("Enter the size of the array: ") # Pseudo asks for 'size'
 
 	# Global arr var
-	global array
+	global arr
 
 	# Make sure list is empty [Might be temporary? Since no error handling just yet]
-	array.clear()
+	arr.clear()
 
 	# Basic range loop for appending elements into
 	# the empty list
+	# NOTE: This uses append instead of manual indice input
 	for x in range(size):
-		array.append(main.prompt("Enter the " + str(x+1) + " element: ")) # TODO: Optimize printout
+		arr.append(main.prompt("Enter the " + str(x+1) + " element: ")) # TODO: Optimize printout
 	
 	print("Array Created!")
 	# main.pause_screen # Pause Screen not working TODO
 	# show_array_menu()
 
 def show_original():
-	print(array)
+	print(arr)
 
 def show_sorted():
 	# Note adding '.sort' inside print func returns NONE
@@ -57,7 +58,7 @@ def show_sorted():
 	
 	# Create a temp sorted arr var to be sorted
 	# for every func call~
-	sorted_array = array.copy()
+	sorted_array = arr.copy()
 	sorted_array.sort()
 	print(sorted_array)
 
@@ -67,7 +68,7 @@ def search_element():
 	n = main.prompt("Enter the value of an element to search: ")
 
 	# Basic check if inside array
-	if (n in array):
+	if (n in arr):
 		print(str(n) + " is found within the array!") # TODO: Optimize printout
 	else:
 		print(str(n) + " is NOT found within the array! " +\
