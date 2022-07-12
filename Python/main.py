@@ -72,10 +72,8 @@ def main():
 		# choices in main menu
 		if choice == 1:
 			show_data_structures_menu()
-			pass
 		elif choice == 2:
 			show_algorithms_menu()
-			pass
 		elif choice == 3:
 			print("Exiting...")
 			quit()
