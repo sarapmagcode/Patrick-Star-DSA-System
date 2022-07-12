@@ -163,15 +163,15 @@ struct Queue {
   int *queue = new int[size];
   int front = -1;
   int rear = -1;
-  int numItems = 0;
-
+  int numItems = -1;
+  vector<int> displayArray;
   void queueMenu() {
     system("clear");
     int choice;
     generate_menu_header(
         "Queue", {"Create queue", "Check if full", "Check if empty",
                   "Enqueue/Insert", "Dequeue/Remove", "Get front/first element",
-                  "Get rear/last element", "Go back"});
+                  "Get rear/last element", "Display", "Go back"});
     while (true) {
       cout << "Enter choice: ";
       cin >> choice;
@@ -227,7 +227,13 @@ struct Queue {
           else
             showRear();
           break;
-        case 8: {
+        case 8:
+            if(!created)
+                cout << "Create a queue first." << endl;
+            else
+                display();
+            break;
+        case 9: {
           generate_menu_header(
               "Data Structures",
               {"Array", "Queue", "Linked List", "Binary Tree"});
@@ -256,7 +262,11 @@ struct Queue {
         queue[rear] = val;
         numItems++;
       }
+
     }
+    // implementation of vector for displaying the resized array
+    vector<int> tempArray(queue, queue + size);
+    displayArray.assign(tempArray.begin(), tempArray.end());
 
     created = true;
     system("clear");
@@ -277,7 +287,7 @@ struct Queue {
 
   bool isFull() {
     bool status;
-    if (numItems < size) {
+    if (numItems <= size) {
       status = false;
     } else {
       status = true;
@@ -295,6 +305,7 @@ struct Queue {
       rear = (rear + 1) % size;
       queue[rear] = val;
       numItems++;
+      displayArray.insert(displayArray.begin(), val);
     }
   }
 
@@ -305,6 +316,7 @@ struct Queue {
       front = (front + 1) % size;
       numItems--;
       cout << "Popped front value" << endl;
+      displayArray.pop_back();
     }
   }
 
@@ -312,7 +324,7 @@ struct Queue {
     if (checkEmpty()) {
       cout << "The queue is empty" << endl;
     } else {
-      cout << "The front of the queue is the value: " << queue[numItems - 1]
+      cout << "The front of the queue is the value: " << queue[numItems]
            << endl;
     }
   }
@@ -324,6 +336,23 @@ struct Queue {
       cout << "The rear of the queue is the value: " << queue[0] << endl;
     }
   }
+
+    void display(){
+        if(checkEmpty()){
+            cout << "The queue is empty" << endl;
+        }else{
+            system("clear");
+            cout << "===== Queue Elements =====" << endl;
+            cout << "[ ";
+            for(int i : displayArray){
+                cout << i << " ";
+            }
+
+            cout << "]\n" << endl;
+            system("read -p 'Press any key to continue... '");
+            queueMenu();
+        }
+    }
 };
 
 // Class for Stack Data Structure
@@ -466,6 +495,57 @@ struct Stack {
     }
 
 
+};
+
+// Class for Binary Search Tree
+struct BinaryTree{
+    struct TreeNode{
+        int value;
+        TreeNode *left;
+        TreeNode *right;
+    };
+    TreeNode *root;
+
+    void insertNode(){
+        int val;
+        cout << "Enter the value to be inserted: ";
+        cin >> val;
+        TreeNode *newNode, *nodePtr;
+        newNode = new TreeNode;
+        newNode->value = val;
+        newNode->left = newNode->right = NULL;
+
+        if (!root){
+            root = newNode;
+        }else{
+
+            nodePtr = root;
+            while (nodePtr != NULL) {
+                if (val < nodePtr->value) {
+                    if (nodePtr->left) {
+                        nodePtr = nodePtr->left;
+                    } else {
+                        nodePtr->left = newNode;
+                        break;
+                    }
+                } else if (val > nodePtr->value) {
+                    if (nodePtr->right) {
+                        nodePtr = nodePtr->right;
+                    } else {
+                        nodePtr->right = newNode;
+                        break;
+                    }
+                } else {
+                    cout << "Duplicate value found in tree.\n";
+                    break;
+                }
+            } 
+        }
+        
+    }
+
+
+        
 };
 
 void show_data_structures_menu() {
