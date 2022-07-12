@@ -12,6 +12,5 @@ def show_stack_menu():
 			pass
 		elif num == 6:
 			main.show_data_structures_menu()
-			pass	
 		else:
 			print("Invalid. Please try again.")
