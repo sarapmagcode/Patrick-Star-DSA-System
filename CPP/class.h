@@ -366,7 +366,6 @@ struct Stack {
 
 
     void stackMenu() {
-
     if(!created)
         askSize();
 
@@ -499,17 +498,71 @@ struct Stack {
 
 // Class for Binary Search Tree
 struct BinaryTree{
+    bool created = false;
+
     struct TreeNode{
         int value;
         TreeNode *left;
         TreeNode *right;
     };
     TreeNode *root;
+    
+    BinaryTree(){       // Constructor for instantiating root
+        root = NULL;
+    }
 
-    void insertNode(){
-        int val;
-        cout << "Enter the value to be inserted: ";
-        cin >> val;
+    void binaryMenu() {
+        // Generate data in nodes
+        if(!created){
+            for(int i=100; i < 108 ; i++)
+                insertNode(i*4); 
+            created = true;           
+        }
+        system("clear");
+        created = true;
+        int choice;
+        generate_menu_header("Binary Tree", {"Display tree", "In order traversal", "Pre order traversal", "Post order traversal", "Go back"});
+
+        while (true) {
+        cout << "Enter choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "[ ";
+                displayInOrder(root);
+                cout << " ]";
+                break;
+            case 2:
+                cout << "=== Displaying with In Order traversal ===" << endl;
+                cout << "[ ";
+                displayInOrder(root);
+                cout << " ]" << endl;               
+                break;
+            case 3:
+                cout << "=== Displaying with Pre Order traversal ===" << endl;
+                cout << "[ ";
+                displayPreOrder(root);
+                cout << " ]" << endl; 
+                break;
+            case 4:
+                cout << "=== Displaying with Post Order traversal ===" << endl;
+                cout << "[ ";
+                displayPostOrder(root);
+                cout << " ]" << endl; 
+                break;
+            case 5:
+                generate_menu_header(
+                "Data Structures",
+                {"Array", "Queue", "Linked List", "Binary Tree"});
+            show_data_structures_menu();
+                break;
+            default:
+                cout << "Invalid. Please try again." << endl;
+        }
+        }
+  }
+
+    void insertNode(int val){
         TreeNode *newNode, *nodePtr;
         newNode = new TreeNode;
         newNode->value = val;
@@ -541,11 +594,32 @@ struct BinaryTree{
                 }
             } 
         }
-        
     }
 
+    void displayInOrder(TreeNode *nodePtr){
+        if (nodePtr) {
+            displayInOrder(nodePtr->left);
+            cout << nodePtr->value << " ";
+            displayInOrder(nodePtr->right);
+        }
+    }
 
-        
+    void displayPreOrder(TreeNode *nodePtr){
+        if(nodePtr){
+            cout << nodePtr->value << " ";
+            displayPreOrder(nodePtr->left);
+            displayPreOrder(nodePtr->right);
+        }
+    }
+
+    void displayPostOrder(TreeNode *nodePtr){
+        if (nodePtr){
+            displayPostOrder(nodePtr->left);
+            displayPostOrder(nodePtr->right);
+            cout << nodePtr->value << " ";
+        }
+    }
+
 };
 
 void show_data_structures_menu() {
@@ -577,6 +651,13 @@ void show_data_structures_menu() {
       case 4:
         // Binary Tree
         break;
+      case 5:{
+        BinaryTree binarytree_obj;
+        binarytree_obj.binaryMenu();
+        break;        
+      }
+
+
       default:
         cout << "Invalid. Please try again." << endl;
     }
