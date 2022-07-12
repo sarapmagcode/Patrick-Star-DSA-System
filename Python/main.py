@@ -6,8 +6,13 @@ import linkedlist
 import binarytree
 import graph
 
+# TODO Error handling? 
+
 def pause_screen():
 	inp = input("\nPress enter to continue...")
+
+def clear_screen():
+	os.system("clear")
 
 def prompt(question):
 	try:
@@ -36,26 +41,19 @@ def show_data_structures_menu():
 
 		# start of data structures menu:
 		if choice == 1:
-			aray.show_array_menu()
-			break
+			arr.show_array_menu()
 		elif choice == 2:
 			queue.show_queue_menu()
-			break
 		elif choice == 3:
 			stack.show_stack_menu()
-			break
 		elif choice == 4:
 			linkedlist.show_linkedlist_menu()
-			break
 		elif choice == 5:
 			binarytree.show_binarytree_menu()	
-			break
 		elif choice == 6:
 			graph.show_graph_menu()
-			break
 		elif choice == 7:
 			main()
-			break
 		else:
 			print("Invalid. Please try again.")
 
@@ -74,10 +72,8 @@ def main():
 		# choices in main menu
 		if choice == 1:
 			show_data_structures_menu()
-			break
 		elif choice == 2:
 			show_algorithms_menu()
-			break
 		elif choice == 3:
 			print("Exiting...")
 			quit()

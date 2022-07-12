@@ -9,9 +9,9 @@ def show_stack_menu():
 		
 		# start of stack menu:
 		if num == 1:
-			break
+			pass
 		elif num == 6:
 			main.show_data_structures_menu()
-			break	
+			pass	
 		else:
 			print("Invalid. Please try again.")
