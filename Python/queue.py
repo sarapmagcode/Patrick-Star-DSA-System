@@ -26,3 +26,8 @@ def show_queue_menu():
 			main.show_data_structures_menu()
 		else:
 			print("Invalid. Please try again.")
+
+
+def create_queue():
+	main.clear_screen()
+	n = 

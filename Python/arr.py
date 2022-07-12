@@ -31,7 +31,7 @@ def show_array_menu():
 
 def create_array():
 	main.clear_screen()
-	n = main.prompt("Enter the size of the array: ") # Pseudo asks for 'size'
+	size = main.prompt("Enter the size of the array: ") # Pseudo asks for 'size'
 
 	# Global arr var
 	global array
@@ -41,7 +41,7 @@ def create_array():
 
 	# Basic range loop for appending elements into
 	# the empty list
-	for x in range(n):
+	for x in range(size):
 		array.append(main.prompt("Enter the " + str(x+1) + " element: ")) # TODO: Optimize printout
 	
 	print("Array Created!")
@@ -62,7 +62,7 @@ def show_sorted():
 	print(sorted_array)
 
 def search_element():
-	# Instantiate var 'n' as value to hold for searching a 
+	# Instantiate var 'size' as value to hold for searching a 
 	# specific element
 	n = main.prompt("Enter the value of an element to search: ")
 
