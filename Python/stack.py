@@ -4,6 +4,7 @@ import main
 stck = []
 size = 0
 top = -1
+first_time = True
 
 def show_stack_menu():
 	#Asks user first generation of stack size first
@@ -43,9 +44,21 @@ def push():
 	# Connect to global vars
 	global stck, top
 
+	# Check if this is first time/element to push
+	# List/Array of Stack doesn't like to push with INDICES
+	# WITHOUT first populating the list or using the 'append' function
+	#
+	# A workaround has been implemented
+
 	val = main.prompt("Enter a value to push: ")
 	top += 1
-	stck[0] = val
+
+	if(first_time):
+		stck.append(val)
+	else:
+		stck[top] = val
+	
+	
 
 def pop():
 	# Connect to global vars
@@ -69,8 +82,18 @@ def isEmpty():
 	return status
 
 def display():
-	#NOTE: Basic display output
+	# #NOTE: Basic display output
+	# if(isEmpty()):
+	# 	print("The stack is empty")
+	# else:
+	# 	print(stck)
+
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
-		print(stck)
+		for i in range(top+1):
+			print(stck[i],end=" ")
+			
+		main.pause_screen()
+		main.clear_screen
+		
