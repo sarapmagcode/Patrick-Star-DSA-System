@@ -9,10 +9,10 @@ def show_binarytree_menu():
 		
 		# start of binary tree menu:
 		if num == 1:
-			break
+			pass
 		elif num == 5:
 			main.show_data_structures_menu()
-			break
+			pass
 		else:
 			print("Invalid. Please try again.")
 		
