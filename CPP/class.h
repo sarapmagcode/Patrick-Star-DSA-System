@@ -227,12 +227,8 @@ struct Queue{
                         showRear();
                     break;
                 case 8:{
-                    if(!created)
-                        cout << "Create a queue first." << endl;
-                    else{          
-                        generate_menu_header("Data Structures",{"Array", "Queue", "Linked List", "Binary Tree"});
-                        show_data_structures_menu();
-                    }
+                    generate_menu_header("Data Structures",{"Array", "Queue", "Linked List", "Binary Tree"});
+                    show_data_structures_menu();
                     break;
                 }
                 default:
@@ -319,13 +315,14 @@ struct Queue{
             cout << "The front of the queue is the value: "<< queue[numItems - 1] << endl;
         }
 
-        for(int i = 0; i < size; i++){
-            cout << "[" << queue[i] << "]" << endl;
-        }
     }
 
     void showRear(){
-        cout << "The rear of the queue is the value: " << queue[0] << endl;
+        if(checkEmpty()){
+            cout << "The queue is empty" << endl;
+        }else{
+            cout << "The rear of the queue is the value: " << queue[0] << endl;
+        }
     }
 
 };
