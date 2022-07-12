@@ -1,10 +1,8 @@
 #include <iostream>
-#include <vector>
 #include "class.h"
-#include "menu.h"
 using namespace std;
 
-
+// Updated
 int main() {
 
     // print Banner
