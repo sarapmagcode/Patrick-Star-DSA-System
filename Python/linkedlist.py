@@ -10,10 +10,10 @@ def show_linkedlist_menu():
 		# start of linked list menu:
 		if num == 1:
 			print("Append Node")
-			break
+			pass
 		elif num == 5:
 			main.show_data_structures_menu()
-			break
+			pass
 		else:
 			print("Invalid. Please try again.")
 		

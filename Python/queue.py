@@ -9,21 +9,21 @@ def show_queue_menu():
 		
 		# start of queue menu:
 		if num == 1:
-			break
+			pass
 		elif num == 2:
-			break
+			pass
 		elif num == 3:
-			break
+			pass
 		elif num == 4:
-			break
+			pass
 		elif num == 5:
-			break
+			pass
 		elif num == 6:
-			break
+			pass
 		elif num == 7:
-			break
+			pass
 		elif num == 8:
 			main.show_data_structures_menu()
-			break
+			pass
 		else:
 			print("Invalid. Please try again.")
