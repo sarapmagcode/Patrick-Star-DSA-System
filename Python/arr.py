@@ -70,6 +70,6 @@ def search_element():
 	if (n in array):
 		print(str(n) + " is found within the array!") # TODO: Optimize printout
 	else:
-		print(str(n) + " is NOT found within the array!\
-							 Try to see if the entered value is correct\
-								 then try again.") # TODO: Optimize printout
+		print(str(n) + " is NOT found within the array! " +\
+							 "Try to see if the entered value is correct " +\
+								 "then try again.") # TODO: Optimize printout
