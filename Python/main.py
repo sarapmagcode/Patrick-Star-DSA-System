@@ -1,5 +1,5 @@
 import os
-import aray
+import arr
 import queue
 import stack
 import linkedlist
