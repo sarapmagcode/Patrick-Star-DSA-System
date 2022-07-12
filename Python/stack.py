@@ -1,10 +1,10 @@
 import main
 
-# Global stack variables
-stackArray = []
-size = 0
-top = -1
-first_time = True
+class stack:
+	array = []
+	size = 0
+	top = -1
+	first_time = True
 
 def show_stack_menu():
 	#Asks user first generation of stack size first
@@ -34,16 +34,10 @@ def show_stack_menu():
 
 def create_stack():
 	main.clear_screen()
-
-	# Connect to global vars
-	global size
 	
-	size = main.prompt("Enter the size of the stack: ") # Pseudo asks for 'size'
+	stack.size = main.prompt("Enter the size of the stack: ") # Pseudo asks for 'size'
 
 def push():
-	# Connect to global vars
-	global stackArray, top
-
 	# Check if this is first time/element to push
 	# List/Array of Stack doesn't like to push with INDICES
 	# WITHOUT first populating the list or using the 'append' function
@@ -51,48 +45,39 @@ def push():
 	# A workaround has been implemented
 
 	val = main.prompt("Enter a value to push: ")
-	top += 1
+	stack.top += 1
 
-	if(first_time):
-		stackArray.append(val)
+	if(stack.first_time):
+		stack.array.append(val)
 	else:
-		stackArray[top] = val
+		stack.array[stack.top] = val
 	
 	
 
 def pop():
-	# Connect to global vars
-	global stackArray, top
-
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
-		top -= 1
-		stackArray[top]
+		stack.top -= 1
+		stack.array[stack.top]
 
 def peek():
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
 		#NOTE: Basic display output
-		print("The top of the stack is", stackArray[top])
+		print("The top of the stack is", stack.array[stack.top])
 
 def isEmpty():
-	status = True if top == -1 else False
+	status = True if stack.top == -1 else False
 	return status
 
 def display():
-	# #NOTE: Basic display output
-	# if(isEmpty()):
-	# 	print("The stack is empty")
-	# else:
-	# 	print(stackArray)
-
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
-		for i in range(top+1):
-			print(stackArray[i],end=" ")
+		for i in range(stack.top+1):
+			print(stack.array[i],end=" ")
 
 		main.pause_screen()
 		main.clear_screen
