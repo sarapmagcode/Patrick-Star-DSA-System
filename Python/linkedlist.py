@@ -13,7 +13,6 @@ def show_linkedlist_menu():
 			pass
 		elif num == 5:
 			main.show_data_structures_menu()
-			pass
 		else:
 			print("Invalid. Please try again.")
 		

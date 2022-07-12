@@ -24,6 +24,5 @@ def show_queue_menu():
 			pass
 		elif num == 8:
 			main.show_data_structures_menu()
-			pass
 		else:
 			print("Invalid. Please try again.")

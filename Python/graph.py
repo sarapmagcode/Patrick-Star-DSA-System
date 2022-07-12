@@ -109,7 +109,7 @@ def show_graph_menu():
 		elif num == 4:
 
 			main.show_data_structures_menu()
-
+			
 		else:
 			print("Invalid. Please try again.")
 			main.pause_screen()
