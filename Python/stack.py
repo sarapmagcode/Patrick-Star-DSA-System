@@ -1,7 +1,7 @@
 import main
 
 # Global stack variables
-stck = []
+stackArray = []
 size = 0
 top = -1
 first_time = True
@@ -42,7 +42,7 @@ def create_stack():
 
 def push():
 	# Connect to global vars
-	global stck, top
+	global stackArray, top
 
 	# Check if this is first time/element to push
 	# List/Array of Stack doesn't like to push with INDICES
@@ -54,28 +54,28 @@ def push():
 	top += 1
 
 	if(first_time):
-		stck.append(val)
+		stackArray.append(val)
 	else:
-		stck[top] = val
+		stackArray[top] = val
 	
 	
 
 def pop():
 	# Connect to global vars
-	global stck, top
+	global stackArray, top
 
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
 		top -= 1
-		stck[top]
+		stackArray[top]
 
 def peek():
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
 		#NOTE: Basic display output
-		print("The top of the stack is", stck[top])
+		print("The top of the stack is", stackArray[top])
 
 def isEmpty():
 	status = True if top == -1 else False
@@ -86,14 +86,14 @@ def display():
 	# if(isEmpty()):
 	# 	print("The stack is empty")
 	# else:
-	# 	print(stck)
+	# 	print(stackArray)
 
 	if(isEmpty()):
 		print("The stack is empty")
 	else:
 		for i in range(top+1):
-			print(stck[i],end=" ")
-			
+			print(stackArray[i],end=" ")
+
 		main.pause_screen()
 		main.clear_screen
 		

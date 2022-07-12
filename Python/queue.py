@@ -1,9 +1,9 @@
 import main
 
 #	Global q array variable
-q = []
-qSize = 0 #  Max Size of array/queue
-qItems = 0 # Actual Elements/Items within the array/queue
+queueArray = []
+size = 0 #  Max Size of array/queue
+items = 0 # Actual Elements/Items within the array/queue
 front = -1 # Index tracking for first & last in the queue
 rear = -1 
 
@@ -41,55 +41,55 @@ def create_queue():
 	main.clear_screen()
 
 	# Connect to global vars
-	global q, qSize, qItems, front, rear
+	global queueArray, size, items, front, rear
 
-	qSize = main.prompt("Enter the size of the queue: ") # Pseudo asks for 'size'
+	size = main.prompt("Enter the size of the queue: ") # Pseudo asks for 'size'
 
 	# Basic range loop for appending elements into
 	# the empty list
-	for x in range(qSize):
+	for x in range(size):
 		# [Optional]
 		# Check before appending if queue is already 'full'
 		#	if 
 
-		q.append(main.prompt("Enter the " + str(x+1) + " element to enqueue: ")) # TODO: Optimize printout
+		queueArray.append(main.prompt("Enter the " + str(x+1) + " element to enqueue: ")) # TODO: Optimize printout
 		# Count number of items queued
-		qItems += 1
+		items += 1
 
 def display():
 	#NOTE: Basic display output
-	print(q)
+	print(queueArray)
 
 def isFull():
-	status = False if qItems < qSize else True
+	status = False if items < size else True
 	return status
 
 def isEmpty():
-	status = False if qItems else True
+	status = False if items else True
 	return status
 
 def enqueue():
 	# Connect to global vars
-	global q, qItems, rear
+	global queueArray, items, rear
 
 	if isFull():
 		print("The queue is full")
 	else:
 		val = main.prompt("Enter an element to enqueue: ")
-		rear = (rear + 1) % qSize
-		q[rear] = val
-		qItems += 1
+		rear = (rear + 1) % size
+		queueArray[rear] = val
+		items += 1
 
 def dequeue():
 	# Connect to global vars
-	global qItems, front
+	global items, front
 
 	if isEmpty():
 		print("The queue is empty")
 	else:
 		# Pseudo pop first in the queue
-		front = (front + 1) % qSize
-		qItems -= 1
+		front = (front + 1) % size
+		items -= 1
 
 # NOTE: Doesn't actually utilize the front/rear
 # index trackers for first and last queue methods!
@@ -98,12 +98,12 @@ def first_queue():
 	if isEmpty():
 		print("The queue is empty")
 	else:
-		print(q[0],"is first in the queue")
+		print(queueArray[0],"is first in the queue")
 def last_queue():
 	if isEmpty():
 		print("The queue is empty")
 	else:
-		print(q[qSize-1],"is the last one in the queue")
+		print(queueArray[size-1],"is the last one in the queue")
 
 
 
