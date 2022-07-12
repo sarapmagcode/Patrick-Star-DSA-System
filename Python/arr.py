@@ -36,7 +36,7 @@ def create_array():
 	# Global arr var
 	global array
 
-	# Make sure list is empty
+	# Make sure list is empty [Might be temporary? Since no error handling just yet]
 	array.clear()
 
 	# Basic range loop for appending elements into
