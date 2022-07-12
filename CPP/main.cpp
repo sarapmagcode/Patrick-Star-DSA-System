@@ -1,14 +1,12 @@
 #include <iostream>
-#include <vector>
 #include "class.h"
-#include "menu.h"
 using namespace std;
 
-
+// Updated
 int main() {
 
     // print Banner
-    generate_menu_header("Main Menu", {"Data Structures", "Algorithms", "Exit"});
+    generate_menu_header("Main Menu", {"Data Structures", "Exit"});
     
     // Menu Loop
     int choice;
@@ -21,12 +19,11 @@ int main() {
                 break;
             }
             case 2:{
-                show_algorithms_menu();
-                break;
-            }
-            case 3:
                 cout << "Exitting.." << endl;
-                exit(0);
+                exit(0);     
+                break;           
+            }
+
             default:
                 cout << "Invalid. Please try again." << endl;
         }
