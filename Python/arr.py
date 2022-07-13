@@ -35,7 +35,7 @@ def create_array():
 
 	# Loop for appending elements into the arr
 	for x in range(size):
-		array.arr.append(main.prompt("Enter the " + str(x+1) + " element: ")) # TODO: Optimize printout
+		array.arr.append(main.prompt("Enter the " + str(x+1) + " element: "))
 	
 	print("\nArray Created!")
 	main.pause_screen()
@@ -45,24 +45,28 @@ def show_original():
 	print(array.arr)
 
 def show_sorted():
-	# Note adding '.sort' inside print func returns NONE
-	# so sorting of list is seperated
+	''' 
+	Note adding '.sort' inside print func returns NONE
+	so sorting of list is seperated
 	
-	# Create a temp sorted arr var to be sorted
-	# for every func call~
+	Create a temp sorted arr var to be sorted
+	for every func call~
+	'''
 	sorted_array = array.arr.copy()
 	sorted_array.sort()
 	print(sorted_array)
 
 def search_element():
-	# Instantiate var 'size' as value to hold for searching a 
-	# specific element
+	''' 
+	Instantiate var 'size' as value to hold for searching a 
+	specific element
+	'''
 	n = main.prompt("Enter the value of an element to search: ")
 
 	# Basic check if inside array
 	if (n in array.arr):
-		print(str(n) + " is found within the array!") # TODO: Optimize printout
+		print(str(n) + " is found within the array!")
 	else:
 		print(str(n) + " is NOT found within the array! " +\
 							"Try to see if the entered value is correct " +\
-								"then try again.") # TODO: Optimize printout
+								"then try again.")
