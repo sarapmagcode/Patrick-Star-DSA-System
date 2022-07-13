@@ -31,9 +31,9 @@ class Graph:
 		# TODO: fix the spaces on large matrix dimensions
 		print()
 		for u in range(self.sz):
-			print((u + 1), end="")
+			print((u + 1), end=" ")
 			for v in range(self.sz):
-				print("".ljust(len(str(v))), self.matrix[u][v], end="")
+				print(self.matrix[u][v], end=" ")
 			print()
 
 def graph_prompt(question):
