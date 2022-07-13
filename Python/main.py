@@ -9,7 +9,8 @@ import graph
 # TODO Error handling? 
 
 def pause_screen():
-	inp = input("\nPress enter to continue...")
+	inp = input("\n\nPress enter to continue...")
+	print()
 
 def clear_screen():
 	os.system("clear")
