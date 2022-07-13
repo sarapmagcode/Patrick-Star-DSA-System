@@ -1,4 +1,5 @@
 from collections import defaultdict
+from re import L
 import main
 
 class Graph:
@@ -27,7 +28,7 @@ class Graph:
 			if u == 0:
 				print(" ", end=" ")
 			print((u + 1), end=" ")
-		
+
 		print()
 		for u in range(self.sz):
 			print((u + 1), end=" ")
@@ -45,7 +46,8 @@ def graph_prompt(question):
 
 def show_graph_menu():
 	is_created = False
-	stored_edges = {}
+	u_stored = []
+	v_stored = []
 	while True:
 		choices = ["Create graph", "Show adjacency list", "Show adjacency matrix", "Go back"]
 		main.generate_menu_header("Graph", choices)
@@ -71,11 +73,18 @@ def show_graph_menu():
 				u = graph_prompt("Enter origin: ")
 				v = graph_prompt("Enter destination: ")
 				if u - 1 >= 0 and u - 1 < vertices and v - 1 >= 0 and v - 1 < vertices:
-					if (u, v) not in stored_edges.items():
+					flag = 1
+					for j in range(len(u_stored)):
+						if u == u_stored[j] and v == v_stored[j]:
+							flag = 0
+							break
+
+					if flag == 1:
 						g.add_edge(u - 1, v - 1)
+						u_stored.append(u)
+						v_stored.append(v)
 						print(f"Edge {i + 1} added!")
 						i += 1
-						stored_edges[u] = v
 					else:
 						print("\nThis edge already exists. Please try again.")
 				else:

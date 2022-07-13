@@ -29,9 +29,69 @@ class LinkedList:
 			print(temp.data, end=" ")
 			temp = temp.next
 	
-	def delete_node_by_value(self):
-		pass
+	def delete_node_by_value(self, key):
+		temp = self.head
+
+		if temp is not None:
+			if temp.data == key:
+				self.head = temp.next
+				temp = None
+				return
+		
+		flag = 0
+		while temp:
+			if temp.data == key:
+				flag = 1
+				break
+			temp = temp.next
+		
+		if flag == 0:
+			print("Node does not exist.")
+			return
+
+		temp = self.head
+		while temp is not None:
+			if temp.data == key:
+				break
+			prev = temp
+			temp = temp.next
+		
+		if temp == None:
+			return
+		
+		prev.next = temp.next
+		temp = None
+
+		print("Node successfully deleted!")
 	
+	def delete_node_by_position(self, pos):
+		if self.head is None:
+			return
+		
+		if pos == 1:
+			self.head = self.head.next
+			return self.head
+		
+		index = 0
+		current = self.head
+		prev = self.head
+		temp = self.head
+		flag = 0
+		while current is not None:
+			if index + 1 == pos:
+				flag = 1
+				temp = current.next
+				break
+			prev = current
+			current = current.next
+			index += 1
+		
+		if flag == 1:
+			prev.next = temp
+			print(f"Node at position {pos} successfully deleted.")
+			return prev
+		else:
+			print("Position does not exist.")
 
 def show_linkedlist_menu():
 	lst = LinkedList()
@@ -44,20 +104,31 @@ def show_linkedlist_menu():
 		# start of linked list menu:
 		if num == 1:
 
-			print("\nAppend Node:")
-			print("Enter value: ", end="")
-			val = int(input())
+			print("\nAppend Node")
+			val = int(input("\nEnter value to append: "))
 
 			lst.append(val)
-			
 			print("Node successfully appended!")
+
 			main.pause_screen()
 
 		elif num == 2:
-			pass
+			
+			print("\nDelete node by value:")
+			val = int(input("\nEnter value to delete: "))
+
+			lst.delete_node_by_value(val)
+			
+			main.pause_screen()
 
 		elif num == 3:
-			pass
+			
+			print("\nDelete node at a given position")
+			pos = int(input("Enter position: "))
+
+			lst.delete_node_by_position(pos)
+
+			main.pause_screen()
 
 		elif num == 4:
 
