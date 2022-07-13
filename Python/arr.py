@@ -28,20 +28,18 @@ def show_array_menu():
 
 def create_array():
 	main.clear_screen()
-	size = main.prompt("Enter the size of the array: ") # Pseudo asks for 'size'
+	size = main.prompt("Enter the size of the array: ")
 
-	# Make sure list is empty [Might be temporary? Since no error handling just yet]
+	# Make sure list is empty
 	array.arr.clear()
 
-	# Basic range loop for appending elements into
-	# the empty list
-	# NOTE: This uses append instead of manual indice input
+	# Loop for appending elements into the arr
 	for x in range(size):
 		array.arr.append(main.prompt("Enter the " + str(x+1) + " element: ")) # TODO: Optimize printout
 	
-	print("Array Created!")
-	# main.pause_screen # Pause Screen not working TODO
-	# show_array_menu()
+	print("\nArray Created!")
+	main.pause_screen()
+	main.clear_screen()
 
 def show_original():
 	print(array.arr)
