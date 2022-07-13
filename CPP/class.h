@@ -521,36 +521,31 @@ struct BinaryTree{
         system("clear");
         created = true;
         int choice;
-        generate_menu_header("Binary Tree", {"Display tree", "In order traversal", "Pre order traversal", "Post order traversal", "Go back"});
+        generate_menu_header("Binary Tree", {"In order traversal", "Pre order traversal", "Post order traversal", "Go back"});
 
         while (true) {
         cout << "Enter choice: ";
         cin >> choice;
         switch (choice) {
             case 1:
-                cout << "[ ";
-                displayInOrder(root);
-                cout << " ]";
-                break;
-            case 2:
                 cout << "=== Displaying with In Order traversal ===" << endl;
                 cout << "[ ";
                 displayInOrder(root);
                 cout << " ]" << endl;               
                 break;
-            case 3:
+            case 2:
                 cout << "=== Displaying with Pre Order traversal ===" << endl;
                 cout << "[ ";
                 displayPreOrder(root);
                 cout << " ]" << endl; 
                 break;
-            case 4:
+            case 3:
                 cout << "=== Displaying with Post Order traversal ===" << endl;
                 cout << "[ ";
                 displayPostOrder(root);
                 cout << " ]" << endl; 
                 break;
-            case 5:
+            case 4:
                 generate_menu_header(
                 "Data Structures",
                 {"Array", "Queue", "Linked List", "Binary Tree"});
