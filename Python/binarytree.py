@@ -1,7 +1,7 @@
 import main
 
 def show_binarytree_menu():
-	choices = ["Display tree", "In-order traversal", "Pre-order traversal", "Post-order traversal", "Go back"]
+	choices = ["In-order traversal", "Pre-order traversal", "Post-order traversal", "Go back"]
 	main.generate_menu_header("Binary Tree", choices)
 
 	while True:
@@ -10,7 +10,7 @@ def show_binarytree_menu():
 		# start of binary tree menu:
 		if num == 1:
 			pass
-		elif num == 5:
+		elif num == 4:
 			main.show_data_structures_menu()
 		else:
 			print("Invalid. Please try again.")

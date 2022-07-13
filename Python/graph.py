@@ -65,7 +65,6 @@ def show_graph_menu():
 	
 			g = Graph(vertices)
 			
-			# TODO: fix the duplicate edges
 			print(f"Enter {edges}  edges: ")
 			i = 0
 			while i < edges:
