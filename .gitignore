@@ -1,0 +1,4 @@
+# Ignore cache files being pushed to the repo
+# This is to avoid merge conflicts
+Python/__pycache__/
+.DS_Store
