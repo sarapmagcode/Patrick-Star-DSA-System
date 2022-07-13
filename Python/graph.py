@@ -27,8 +27,7 @@ class Graph:
 			if u == 0:
 				print(" ", end=" ")
 			print((u + 1), end=" ")
-
-		# TODO: fix the spaces on large matrix dimensions
+		
 		print()
 		for u in range(self.sz):
 			print((u + 1), end=" ")
