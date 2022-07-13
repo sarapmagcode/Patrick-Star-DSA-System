@@ -1,33 +1,8 @@
-#include <iostream>
 #include "class.h"
-using namespace std;
 
 // Updated
 int main() {
-
-    // print Banner
-    generate_menu_header("Main Menu", {"Data Structures", "Exit"});
-    
-    // Menu Loop
-    int choice;
-    while(true){
-        cout << "Enter choice: ";
-        cin >> choice;
-        switch(choice){
-            case 1:{
-                show_data_structures_menu();
-                break;
-            }
-            case 2:{
-                cout << "Exitting.." << endl;
-                exit(0);     
-                break;           
-            }
-
-            default:
-                cout << "Invalid. Please try again." << endl;
-        }
-    }
+    show_data_structures_menu();
     return 0;
 }
 

@@ -58,8 +58,8 @@ struct Array
 					break;
 				case 5:
 					{
-						generate_menu_header(							"Data Structures",
-							{ 					"Array", "Queue", "Linked List", "Binary Tree" });
+						generate_menu_header("Data Structures",
+						{ 				"Array", "Queue", "Linked List", "Binary Tree" });
 						show_data_structures_menu();
 						break;
 					}
@@ -189,10 +189,10 @@ struct Queue
 	{
 		system("clear");
 		int choice;
-		generate_menu_header(			"Queue",
-			{ 	"Create queue", "Check if full", "Check if empty",
-				"Enqueue/Insert", "Dequeue/Remove", "Get front/first element",
-				"Get rear/last element", "Display", "Go back" });
+		generate_menu_header("Queue",
+		{ "Create queue", "Check if full", "Check if empty",
+			"Enqueue/Insert", "Dequeue/Remove", "Get front/first element",
+			"Get rear/last element", "Display", "Go back" });
 		while (true)
 		{
 			cout << "Enter choice: ";
@@ -268,8 +268,8 @@ struct Queue
 					break;
 				case 9:
 					{
-						generate_menu_header(							"Data Structures",
-							{ 					"Array", "Queue", "Linked List", "Binary Tree" });
+						generate_menu_header("Data Structures",
+						{ 				"Array", "Queue", "Linked List", "Binary Tree" });
 						show_data_structures_menu();
 						break;
 					}
@@ -472,8 +472,8 @@ struct Stack
 					display();
 					break;
 				case 6:
-					generate_menu_header(						"Data Structures",
-						{ 				"Array", "Queue", "Linked List", "Binary Tree" });
+					generate_menu_header("Data Structures",
+					{ 			"Array", "Queue", "Linked List", "Binary Tree" });
 					show_data_structures_menu();
 					break;
 				default:
@@ -651,8 +651,8 @@ struct BinaryTree
 					cout << " ]" << endl;
 					break;
 				case 4:
-					generate_menu_header(						"Data Structures",
-						{ 				"Array", "Queue", "Linked List", "Binary Tree" });
+					generate_menu_header("Data Structures",
+					{ 			"Array", "Queue", "Linked List", "Binary Tree" });
 					show_data_structures_menu();
 					break;
 				default:
@@ -742,13 +742,17 @@ struct BinaryTree
 	}
 };
 
+// Class for GraphTheory
 struct GraphTheory
 {
-  int size;
-  int **matrix = new int*[size]; // Dynamic Multidimensional Array
-  bool created = false;
-	
-  void graphMenu()
+	int vertices;
+	int u, v;
+	int edges;
+	vector<vector < int>> matrix;	// Dynamic Multidimensional Array
+	vector<vector < int>> graph;
+	bool created = false;
+
+	void graphMenu()
 	{
 		// Generate data in nodes
 		system("clear");
@@ -763,13 +767,18 @@ struct GraphTheory
 			switch (choice)
 			{
 				case 1:
-          createGraph();
+					createGraph();
 					break;
 				case 2:
+					show_adjacency_list();
 					break;
 				case 3:
+					show_adjacency_matrix();
 					break;
 				case 4:
+					generate_menu_header("Data Structures",
+					{ 			"Array", "Queue", "Linked List", "Binary Tree" });
+					show_data_structures_menu();
 					break;
 				default:
 					cout << "Invalid. Please try again." << endl;
@@ -777,14 +786,147 @@ struct GraphTheory
 		}
 	}
 
-  void createGraph(){
+	void createGraph()
+	{
+		vector<int> u_stored;
+		vector<int> v_stored;
 
-  }
+		int flag;
+		cout << "Enter number of vertices: ";
+		cin >> vertices;
+		matrix.resize(vertices);
+		// Input 0 to all[i][j]
+		for (int i = 0; i < vertices; i++)
+		{
+			matrix[i].resize(vertices);
+		}
+
+		graph.resize(vertices);
+		// Input 0 to all[i][j]
+		for (int i = 0; i < vertices; i++)
+		{
+			graph[i].resize(vertices);
+			for (int j = 0; j < vertices; j++)
+			{
+				graph[i][j] = INT_MAX;
+			}
+		}
+
+		cout << "Enter number of edges: ";
+		cin >> edges;
+		int i = 0;
+		while (i < edges)
+		{
+			cout << "\n For edge " << i + 1 << endl;
+			cout << "Enter origin: ";
+			cin >> u;
+			cout << "Enter destination: ";
+			cin >> v;
+
+			if (u - 1 >= 0 && u - 1 < vertices && v - 1 >= 0 && v - 1 < vertices)
+			{
+				flag = 1;
+				for (int i = 0; i > u_stored.size(); i++)
+				{
+					if (u_stored[i] == u && v == v_stored[i])
+					{
+						flag = 0;
+						break;
+					}
+				}
+
+				if (flag == 1)
+				{
+					add_edge(u - 1, v - 1);
+					u_stored.push_back(u);
+					v_stored.push_back(v);
+					cout << "Edge " << i + 1 << " added!" << endl;
+					i++;
+				}
+				else
+				{
+					cout << "\nThis edge already exists. Please try again.";
+				}
+			}
+			else
+			{
+				cout << "\nVertices are out of range. Please try again.";
+			}
+		}
+
+		created = true;
+		system("clear");
+		cout << "\nGraph created successfully" << endl;
+		system("read -p 'Press any key to continue... '");
+		graphMenu();
+
+	}
+
+	void add_edge(int u, int v)
+	{
+		for (int i = 0; i < graph[u].size(); i++)
+		{
+			if (graph[u][i] == INT_MAX)
+			{
+				graph[u][i] = v;
+				break;
+			}
+			else
+			{
+				continue;
+			}
+		}
+		matrix[u][v] = 1;
+		created = true;
+	}
+
+	void show_adjacency_list()
+	{
+		for (int u = 0; u < vertices; u++)
+		{
+			cout << u + 1 << " ";
+			for (int v = 0; v < (int) graph[u].size(); v++)
+			{
+				if (graph[u][v] != INT_MAX)
+				{
+					cout << "-> " << graph[u][v] + 1 << " ";
+				}
+				else
+				{
+					continue;
+				}
+			}
+			cout << endl;
+		}
+	}
+
+	void show_adjacency_matrix()
+	{
+		for (int u = 0; u < vertices; u++)
+		{
+			if (u == 0)
+			{
+				cout << "  ";
+			}
+			cout << u + 1 << " ";
+		}
+		cout << endl;
+
+		for (int u = 0; u < vertices; u++)
+		{
+			cout << u + 1 << " ";
+			for (int i = 0; i < vertices; i++)
+			{
+				cout << matrix[u][i] << " ";
+			}
+			cout << endl;
+		}
+	}
 };
 
 void show_data_structures_menu()
 {
-	vector<string> choices = { "Array", "Queue", "Stack", "Linked List", "Binary Tree" };
+	vector<string> choices = { "Array", "Queue", "Stack", "Linked List", "Binary Tree", "Graph Theory" };
 	generate_menu_header("Data Structures", choices);
 
 	// Menu Loop
@@ -823,6 +965,12 @@ void show_data_structures_menu()
 					binarytree_obj.binaryMenu();
 					break;
 				}
+			case 6:
+				{
+					GraphTheory graph_obj;
+					graph_obj.graphMenu();
+					break;
+				}
 
 			default:
 				cout << "Invalid. Please try again." << endl;
@@ -842,4 +990,4 @@ void generate_menu_header(string title, vector<string> choices)
 	}
 }
 
-# endif
+#endif
