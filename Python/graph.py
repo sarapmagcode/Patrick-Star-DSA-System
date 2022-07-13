@@ -27,13 +27,12 @@ class Graph:
 			if u == 0:
 				print(" ", end=" ")
 			print((u + 1), end=" ")
-
-		# TODO: fix the spaces on large matrix dimensions
+		
 		print()
 		for u in range(self.sz):
-			print((u + 1), end="")
+			print((u + 1), end=" ")
 			for v in range(self.sz):
-				print("".ljust(len(str(v))), self.matrix[u][v], end="")
+				print(self.matrix[u][v], end=" ")
 			print()
 
 def graph_prompt(question):
@@ -46,6 +45,7 @@ def graph_prompt(question):
 
 def show_graph_menu():
 	is_created = False
+	stored_edges = {}
 	while True:
 		choices = ["Create graph", "Show adjacency list", "Show adjacency matrix", "Go back"]
 		main.generate_menu_header("Graph", choices)
@@ -54,7 +54,7 @@ def show_graph_menu():
 		if num == -1:
 			main.pause_screen()
 			continue
-		
+
 		# start of graph menu:
 		if num == 1:
 			print("\nCreate Graph")
@@ -64,7 +64,6 @@ def show_graph_menu():
 	
 			g = Graph(vertices)
 			
-			# TODO: fix the duplicate edges
 			print(f"Enter {edges}  edges: ")
 			i = 0
 			while i < edges:
@@ -72,9 +71,13 @@ def show_graph_menu():
 				u = graph_prompt("Enter origin: ")
 				v = graph_prompt("Enter destination: ")
 				if u - 1 >= 0 and u - 1 < vertices and v - 1 >= 0 and v - 1 < vertices:
-					g.add_edge(u - 1, v - 1)
-					print(f"Edge {i + 1} added!")
-					i += 1
+					if (u, v) not in stored_edges.items():
+						g.add_edge(u - 1, v - 1)
+						print(f"Edge {i + 1} added!")
+						i += 1
+						stored_edges[u] = v
+					else:
+						print("\nThis edge already exists. Please try again.")
 				else:
 					print("\nVertices are out of range. Please try again.")
 			
