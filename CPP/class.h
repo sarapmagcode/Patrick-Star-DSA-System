@@ -59,7 +59,7 @@ struct Array
 				case 5:
 					{
 						generate_menu_header("Data Structures",
-						{ 				"Array", "Queue", "Linked List", "Binary Tree" });
+						{ 				"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
 						show_data_structures_menu();
 						break;
 					}
@@ -71,6 +71,7 @@ struct Array
 
 	void createArray()
 	{
+		system("clear");
 		cout << "Enter the size of the array: ";
 		cin >> size;
 		delete[] arr;
@@ -83,8 +84,8 @@ struct Array
 		}
 
 		created = true;
-		system("clear");
-		cout << "Array successfully created.\n";
+
+		cout << "\nArray successfully created.\n";
 		system("read -p 'Press any key to continue... '");
 		arrayMenu();
 	}
@@ -269,7 +270,7 @@ struct Queue
 				case 9:
 					{
 						generate_menu_header("Data Structures",
-						{ 				"Array", "Queue", "Linked List", "Binary Tree" });
+						{ 				"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
 						show_data_structures_menu();
 						break;
 					}
@@ -473,7 +474,7 @@ struct Stack
 					break;
 				case 6:
 					generate_menu_header("Data Structures",
-					{ 			"Array", "Queue", "Linked List", "Binary Tree" });
+					{ 			"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
 					show_data_structures_menu();
 					break;
 				default:
@@ -592,6 +593,215 @@ struct Stack
 	}
 };
 
+// Class for linked list
+struct LinkedList{
+	struct Node{
+		int key;
+		int data;
+		Node *next;
+
+		Node(){
+			key = 0;
+			data = 0;
+			next = NULL;
+		}
+	};
+
+	Node *head;
+
+	LinkedList(){
+		head = NULL;
+	}
+
+	LinkedList(Node *n){
+		head = n;
+	}
+	Node *n1 = new Node();
+	void linkedListMenu(){
+		int choice, key1, k1, data1;
+		generate_menu_header("Linked List",
+		{ "Append Node", "Delete Node", "Delete Node at given position", "Display",
+			"Go back" });
+
+		while (true)
+		{
+			cout << "Enter choice: ";
+			cin >> choice;
+			switch (choice)
+			{
+				case 1:
+					cout << "\n----Append Node Operation----\nEnter the data value and position : ";
+					cin >> key1;
+					cin >> data1;
+					n1->key = key1;
+					n1->data = data1;
+					appendNode(n1);					
+					break;
+				case 2:
+					cout << "\nDelete Node with an Element of : ";
+					cin >> k1;
+					deleteNode(k1);
+					break;
+				case 3:
+					cout << "\nDelete Node at Given Position of : ";
+					cin >> k1;
+					deleteNodeGivenPosition(k1);
+					break;
+				case 4:
+					cout << "\nCurrent Nodes in the List : ";
+					printList();
+					break;
+				case 5:
+					generate_menu_header("Data Structures",
+					{ 			"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
+					show_data_structures_menu();
+					break;
+				default:
+					cout << "Invalid. Please try again." << endl;
+			}
+		}
+	}
+	
+
+	Node *nodeExists(int k){
+		Node *temp = NULL;
+		Node *ptr = head;
+		while (ptr != NULL){
+			if(ptr->key == k){
+				temp = ptr;
+			}
+			ptr = ptr->next;
+		}
+		return temp;
+	}
+
+	void appendNode(Node *n){
+		if (nodeExists(n->key) != NULL){
+			cout << "\nNode alreay exist. Choose different key value to append" << endl;
+		}
+		else{
+			if(head == NULL){
+				head = n;
+				cout << "Node appended" << endl;
+			}else{
+				Node *ptr = head;
+				while(ptr->next != NULL){
+					ptr = ptr->next;
+				}
+				ptr->next = n;
+				cout << "Node appended" << endl;
+			}
+		}
+	}
+
+    void deleteNode(int k)
+    {
+        if (head == NULL)
+        {
+            cout << "\nLinked List already Empty. Nothing to delete" << endl;
+        }
+        else if (head != NULL)
+        {
+            if (head->key == k)
+            {
+                head = head->next;
+                cout << "Node with element of '" << k << "' has been deleted!!!" << endl;
+            }
+            else
+            {
+                Node *temp = NULL;
+                Node *prevptr = head;
+                Node *currentptr = head->next;
+                while (currentptr != NULL)
+                {
+                    if (currentptr->key == k)
+                    {
+                        temp = currentptr;
+                        currentptr = NULL;
+                    }
+                    else
+                    {
+                        prevptr = prevptr->next;
+                        currentptr = currentptr->next;
+                    }
+                }
+                if (temp != NULL)
+                {
+                    prevptr->next = temp->next;
+                    cout << "\nNode has been Deleted with an element of  : " << k << endl;
+                }
+                else
+                {
+                    cout << "\nNode Doesn't exist with an element of : " << k << endl;
+                }
+            }
+        }
+    }
+
+    void deleteNodeGivenPosition(int d)
+    {
+        if (head == NULL)
+        {
+            cout << "\nLinked List already Empty. Nothing to delete" << endl;
+        }
+        else if (head != NULL)
+        {
+            if (head->data == d)
+            {
+                head = head->next;
+                cout << "Node with position of '" << d << "' has been deleted" << endl;
+            }
+            else
+            {
+                Node *temp = NULL;
+                Node *prevptr = head;
+                Node *currentptr = head->next;
+                while (currentptr != NULL)
+                {
+                    if (currentptr->data == d)
+                    {
+                        temp = currentptr;
+                        currentptr = NULL;
+                    }
+                    else
+                    {
+                        prevptr = prevptr->next;
+                        currentptr = currentptr->next;
+                    }
+                }
+                if (temp != NULL)
+                {
+                    prevptr->next = temp->next;
+                    cout << "\nNode Deleted with a position of  : " << d << endl;
+                }
+                else
+                {
+                    cout << "\nNode Doesn't exist with a position of : " << d << endl;
+                }
+            }
+        }
+    }
+
+    void printList()
+    {
+        if (head == NULL)
+        {
+            cout << "\nNo Node in the List!! Append Node to display nodes in the list";
+        }
+        else
+        {
+            Node *temp = head;
+            while (temp != NULL)
+            {
+                cout << "[" << temp->key << "," << temp->data << "]"
+                     << " -- ";
+                temp = temp->next;
+            }
+        }
+    }
+
+};
+
 // Class for Binary Search Tree
 struct BinaryTree
 {
@@ -652,7 +862,7 @@ struct BinaryTree
 					break;
 				case 4:
 					generate_menu_header("Data Structures",
-					{ 			"Array", "Queue", "Linked List", "Binary Tree" });
+					{ 			"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
 					show_data_structures_menu();
 					break;
 				default:
@@ -777,7 +987,7 @@ struct GraphTheory
 					break;
 				case 4:
 					generate_menu_header("Data Structures",
-					{ 			"Array", "Queue", "Linked List", "Binary Tree" });
+					{ 			"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
 					show_data_structures_menu();
 					break;
 				default:
@@ -924,6 +1134,7 @@ struct GraphTheory
 	}
 };
 
+					Stack stack_obj;
 void show_data_structures_menu()
 {
 	vector<string> choices = { "Array", "Queue", "Stack", "Linked List", "Binary Tree", "Graph Theory" };
@@ -956,9 +1167,11 @@ void show_data_structures_menu()
 					break;
 				}
 
-			case 4:
-				// Binary Tree
+			case 4:{
+				LinkedList linkedlist_obj;
+				linkedlist_obj.linkedListMenu();
 				break;
+			}
 			case 5:
 				{
 					BinaryTree binarytree_obj;
