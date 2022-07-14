@@ -70,6 +70,7 @@ class LinkedList:
 		
 		if pos == 1:
 			self.head = self.head.next
+			print(f"Node at position {pos} successfully deleted.")
 			return self.head
 		
 		index = 0
