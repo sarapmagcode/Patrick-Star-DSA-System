@@ -810,10 +810,10 @@ struct BinaryTree
 	struct TreeNode
 	{
 		int value;
-		TreeNode * left;
-		TreeNode * right;
+		TreeNode *left;
+		TreeNode *right;
 	};
-	TreeNode * root;
+	TreeNode *root;
 
 	BinaryTree()
 	{
@@ -826,12 +826,15 @@ struct BinaryTree
 		// Generate data in nodes
 		if (!created)
 		{
-			for (int i = 100; i < 108; i++)
-				insertNode(i *4);
+			insertNode(5);
+			insertNode(8);
+			insertNode(3);
+			insertNode(12);
+			insertNode(9);
+			insertNode(7);
 			created = true;
 		}
 		system("clear");
-		created = true;
 		int choice;
 		generate_menu_header("Binary Tree",
 		{ "In order traversal", "Pre order traversal", "Post order traversal", "Go back" });
@@ -842,24 +845,27 @@ struct BinaryTree
 			cin >> choice;
 			switch (choice)
 			{
-				case 1:
+				case 1:{
 					cout << "=== Displaying with In Order traversal ===" << endl;
 					cout << "[ ";
 					displayInOrder(root);
 					cout << " ]" << endl;
-					break;
-				case 2:
+					break;					
+				}
+				case 2:{
 					cout << "=== Displaying with Pre Order traversal ===" << endl;
 					cout << "[ ";
 					displayPreOrder(root);
 					cout << " ]" << endl;
 					break;
-				case 3:
+				}
+				case 3:{
 					cout << "=== Displaying with Post Order traversal ===" << endl;
 					cout << "[ ";
 					displayPostOrder(root);
 					cout << " ]" << endl;
-					break;
+					break;					
+				}
 				case 4:
 					generate_menu_header("Data Structures",
 					{ 			"Array", "Queue", "Linked List", "Binary Tree", "Graph Theory" });
@@ -1134,10 +1140,10 @@ struct GraphTheory
 	}
 };
 
-					Stack stack_obj;
+					
 void show_data_structures_menu()
 {
-	vector<string> choices = { "Array", "Queue", "Stack", "Linked List", "Binary Tree", "Graph Theory" };
+	vector<string> choices = { "Array", "Queue", "Stack", "Linked List", "Binary Tree", "Graph Theory", "Exit" };
 	generate_menu_header("Data Structures", choices);
 
 	// Menu Loop
@@ -1184,6 +1190,10 @@ void show_data_structures_menu()
 					graph_obj.graphMenu();
 					break;
 				}
+			case 7:
+				{
+					exit(0);
+				}
 
 			default:
 				cout << "Invalid. Please try again." << endl;
@@ -1194,7 +1204,7 @@ void show_data_structures_menu()
 void generate_menu_header(string title, vector<string> choices)
 {
 	system("clear");
-	cout << "<<Patrick Star DSA Program>>" << endl;
+	cout << "<<Patrick Star DS Program>>" << endl;
 	cout << "===== " << title << " ======" << endl;
 	cout << "Choose:\n";
 	for (int i = 0; i < choices.size(); i++)
