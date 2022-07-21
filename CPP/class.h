@@ -786,7 +786,7 @@ struct LinkedList{
     {
         if (head == NULL)
         {
-            cout << "\nNo Node in the List!! Append Node to display nodes in the list";
+            cout << "\nNo Node in the List!! Append Node to display nodes in the list\n";
         }
         else
         {
